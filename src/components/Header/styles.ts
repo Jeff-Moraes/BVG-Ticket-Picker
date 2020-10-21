@@ -38,7 +38,7 @@ export const HeaderContainer = styled.div`
     align-items: flex-end;
 
     input {
-      height: 2rem;
+      height: 2.4rem;
       background-color: ${secondaryColor};
       border: 2px solid ${darkColor};
       border-radius: 10px 0 0 10px;
@@ -47,21 +47,23 @@ export const HeaderContainer = styled.div`
       padding-left: 0.7rem;
       padding-right: 0.7rem;
       color: ${darkColor};
+      font-size: 0.9rem;
       
       &::placeholder {
-        font-size: 0.55rem;
+        font-size: 0.7rem;
         color: ${darkColor};
       }
     }
 
     button {
-      height: 2rem;
+      height: 2.4rem;
       background-color: ${secondaryColor};
       display: block;
       margin-top: 2rem;
       padding: 10px 20px;
   
       color: ${darkColor};
+      font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
       text-shadow: 2px 2px 1px ${lightColor};

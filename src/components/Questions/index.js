@@ -4,7 +4,7 @@ import questions from '../../assets/questions.js';
 import { findBestTicket } from '../../pickTicket.js';
 import { Container, QuestionContainer } from './styles';
 
-export default function Questions({name, questionIndex, setQuestionIndex}) {
+export default function Questions({name, questionIndex, setQuestionIndex, setPickedTicket}) {
   const [query, setQuery] = useState({
     persons: 1,
     days: 1,
@@ -27,7 +27,7 @@ export default function Questions({name, questionIndex, setQuestionIndex}) {
   const handleSubmitForm = (event) => {
     event.preventDefault();
     let pickedTicket = findBestTicket(query, true);
-    console.log({query}, {pickedTicket})
+    setPickedTicket(pickedTicket)
   }
 
   return (

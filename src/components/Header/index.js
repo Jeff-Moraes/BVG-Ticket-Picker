@@ -8,7 +8,12 @@ export default function Header({name, setName, setQuestionIndex}) {
       <h1>BVG Ticket Picker</h1>
       <h2>Find the best Berlin ticket for short trips and holiday</h2>
       <div>
-        <input type="text" value={name} onChange={(event) => setName(event?.target.value)}/>
+        <input
+          type="text"
+          value={name}
+          placeholder="Please enter your name..."
+          onChange={(event) => setName(event?.target.value)}
+        />
         <button onClick={() => setQuestionIndex(0)}>START</button>
       </div>
     </HeaderContainer>

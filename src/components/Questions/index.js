@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
 
-import questions from '../../assets/questions';
+import questions from '../../assets/questions.js';
 import { Container, QuestionContainer } from './styles';
 
 export default function Questions({name, questionIndex, setQuestionIndex}) {
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState({
+    persons: 1,
+    days: 1,
+    rides: 1,
+    zone: "AB",
+    short: false,
+  });
 
   const handleChange = (key, event) => {
-    const { name, value } = event.target;
-    setQuery({...query, [name]: value})
+    const { name, value, checked } = event.target;
+    if(name === "short") setQuery({...query, [key]: checked})
+    else setQuery({...query, [key]: value})
   }
 
   const handleNextQuestion = () => {
@@ -17,7 +24,7 @@ export default function Questions({name, questionIndex, setQuestionIndex}) {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    console.log("handleSubmitForm")
+    console.log("handleSubmitForm", query)
   }
 
   return (
@@ -32,9 +39,9 @@ export default function Questions({name, questionIndex, setQuestionIndex}) {
               <h3>{question}</h3>
               <div>
                 {options ? (
-                  <select name={key} id={key}>
+                  <select name={key} id={key} onChange={(event) => handleChange(key, event)}>
                     {options.map(option => (
-                      <option key={option} name={key} value={query[key]} onChange={(event) => handleChange(key, event)}>{option}</option>
+                      <option key={option} name={key} value={option}>{option}</option>
                     ))}
                   </select>
                 ) : (

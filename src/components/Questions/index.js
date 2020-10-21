@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import questions from '../../assets/questions.js';
+import { findBestTicket } from '../../pickTicket.js';
 import { Container, QuestionContainer } from './styles';
 
 export default function Questions({name, questionIndex, setQuestionIndex}) {
@@ -12,10 +13,11 @@ export default function Questions({name, questionIndex, setQuestionIndex}) {
     short: false,
   });
 
-  const handleChange = (key, event) => {
+  const handleChange = event => {
     const { name, value, checked } = event.target;
-    if(name === "short") setQuery({...query, [key]: checked})
-    else setQuery({...query, [key]: value})
+    if(name === "short") setQuery({...query, short: checked});
+    else if(name === "zone") setQuery({...query, zone: value});
+    else setQuery({...query, [name]: Number(value)});
   }
 
   const handleNextQuestion = () => {
@@ -24,7 +26,8 @@ export default function Questions({name, questionIndex, setQuestionIndex}) {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    console.log("handleSubmitForm", query)
+    let pickedTicket = findBestTicket(query, true);
+    console.log({query}, {pickedTicket})
   }
 
   return (
@@ -39,14 +42,14 @@ export default function Questions({name, questionIndex, setQuestionIndex}) {
               <h3>{question}</h3>
               <div>
                 {options ? (
-                  <select name={key} id={key} onChange={(event) => handleChange(key, event)}>
+                  <select name={key} id={key} onChange={(event) => handleChange(event)}>
                     {options.map(option => (
                       <option key={option} name={key} value={option}>{option}</option>
                     ))}
                   </select>
                 ) : (
                   <>
-                    <input type={type} name={key} value={query[key]} onChange={(event) => handleChange(key, event)}/>
+                    <input type={type} name={key} value={query[key]} onChange={(event) => handleChange(event)}/>
                     {info && <span>{info}</span>}
                   </>
                 )}

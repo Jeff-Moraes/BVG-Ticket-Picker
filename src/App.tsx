@@ -26,7 +26,6 @@ function App() {
       }
       {pickedTicket &&
         <Ticket
-          name={name}
           pickedTicket={pickedTicket}
           setName={setName}
           setQuestionIndex={setQuestionIndex}

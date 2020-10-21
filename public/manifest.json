@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "BVG Ticket Picker",
+  "name": "Create BVG Ticket Picker Sample",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import questions from '../../assets/questions';
-import {QuestionsContainer} from './styles';
+import { Container, QuestionContainer } from './styles';
 
 export default function Questions({name, questionIndex, setQuestionIndex}) {
   const [query, setQuery] = useState({});
@@ -21,35 +21,37 @@ export default function Questions({name, questionIndex, setQuestionIndex}) {
   }
 
   return (
-    <QuestionsContainer>
+    <Container>
       <h1>Welcome {name}</h1>
       <form onSubmit={handleSubmitForm}>
         {questions.map(({question, options, info, key, type}, index) => (
           questionIndex === index && (
-          <div key={key}>
+          <QuestionContainer key={key}>
             <h2>{index+1}</h2>
             <div>
               <h3>{question}</h3>
-              {options ? (
-                <select name={key} id={key}>
-                  {options.map(option => (
-                    <option key={option} name={key} value={query[key]} onChange={(event) => handleChange(key, event)}>{option}</option>
-                  ))}
-                </select>
-              ) : (
-                <>
-                  <input type={type} name={key} value={query[key]} onChange={(event) => handleChange(key, event)}/>
-                  {info && <span>{info}</span>}
-                </>
-              )}
-              {index < questions.length-1
-                ? <button type="button" onClick={handleNextQuestion}>next</button>
-                : <button type="submit">finish</button>
-              }
+              <div>
+                {options ? (
+                  <select name={key} id={key}>
+                    {options.map(option => (
+                      <option key={option} name={key} value={query[key]} onChange={(event) => handleChange(key, event)}>{option}</option>
+                    ))}
+                  </select>
+                ) : (
+                  <>
+                    <input type={type} name={key} value={query[key]} onChange={(event) => handleChange(key, event)}/>
+                    {info && <span>{info}</span>}
+                  </>
+                )}
+                {index < questions.length-1
+                  ? <button type="button" onClick={handleNextQuestion}>next</button>
+                  : <button type="submit">finish</button>
+                }
+              </div>
             </div>
-          </div>
+          </QuestionContainer>
         )))}
       </form>
-    </QuestionsContainer>
+    </Container>
   )
 }

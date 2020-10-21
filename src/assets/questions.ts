@@ -5,7 +5,7 @@ const questions = [
     type: "number",
   },
   {
-    question: "How long are planning on staying in the city?",
+    question: "How long are you planning to stay?",
     key: "days",
     type: "number",
   },

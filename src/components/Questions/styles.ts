@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-import { secondaryColor, lightColor, darkColor } from '../../styles/colors';
+import { lightColor, darkColor } from '../../styles/colors';
 import headerBackgroundImg from '../../assets/images/header-background.jpg';
 
 export const Container = styled.div`
-  height: 90vh;
+  min-height: 90vh;
+  height: 100%;
   width: 94vw;
   background-image: url(${headerBackgroundImg});
   background-size: cover;
@@ -12,6 +13,7 @@ export const Container = styled.div`
   margin: 3vh 3vw 0 3vw;
   border: 3px solid ${darkColor};
   border-radius: 20px 20px 0 0;
+  box-shadow: 5px 5px 2px ${lightColor};
 
   padding: 14vh 7vw 7vh 7vw;
 
@@ -20,7 +22,12 @@ export const Container = styled.div`
     color: ${darkColor};
 
     text-shadow: 4px 4px 1px ${lightColor};
-    line-height: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
   }
 `;
 
@@ -70,14 +77,15 @@ export const QuestionContainer = styled.div`
       }
 
       input[type=checkbox] {
-        margin-right: 0.5rem;
         box-shadow: none;
+        margin-right: 0.3rem;
       }
-
+      
       span {
+        font-size: 0.75rem;
         align-self: center;
-        margin-right: 0.5rem;
-        width: 15vw;
+        margin-right: 0.3rem;
+        width: 19vw;
       }
 
       button {
@@ -104,6 +112,24 @@ export const QuestionContainer = styled.div`
           text-shadow: 3px 3px 2px ${lightColor};
         }
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    h2 {
+      border-right: none;
+      box-shadow: none;
+    }
+
+    .questionInfo {
+      width: 30vw;
+    }
+  }
+  @media (max-width: 500px) {
+    .questionInfo {
+      width: 50vw;
     }
   }
 `;

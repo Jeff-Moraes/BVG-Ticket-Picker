@@ -4,14 +4,16 @@ import { secondaryColor, lightColor, darkColor } from '../../styles/colors';
 import headerBackgroundImg from '../../assets/images/header-background.jpg';
 
 export const HeaderContainer = styled.div`
-  height: 90vh;
+  min-height: 90vh;
+  height: 100%;
   width: 94vw;
   background-image: url(${headerBackgroundImg});
   background-size: cover;
-
-  margin: 3vh 3vw 0 3vw;
+  
+  margin: 3vh 3vw 5vh 3vw;
   border: 3px solid ${darkColor};
   border-radius: 20px 20px 0 0;
+  box-shadow: 5px 5px 2px ${lightColor};
 
   padding: 14vh 7vw 7vh 7vw;
 

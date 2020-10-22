@@ -32,7 +32,7 @@ export default function Questions({name, questionIndex, setQuestionIndex, setPic
 
   return (
     <Container>
-      <h1>Welcome {name}</h1>
+      <h1>Hello {name}</h1>
       <form onSubmit={handleSubmitForm}>
         {questions.map(({question, options, info, key, type}, index) => (
           questionIndex === index && (
@@ -50,7 +50,7 @@ export default function Questions({name, questionIndex, setQuestionIndex, setPic
                 ) : (
                   <>
                     <input type={type} name={key} value={query[key]} onChange={(event) => handleChange(event)}/>
-                    {info && <span>{info}</span>}
+                    {info && <span className="questionInfo">{info}</span>}
                   </>
                 )}
                 {index < questions.length-1

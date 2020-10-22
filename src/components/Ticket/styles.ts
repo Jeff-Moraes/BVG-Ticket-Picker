@@ -4,22 +4,23 @@ import { secondaryColor, lightColor, darkColor } from '../../styles/colors';
 import headerBackgroundImg from '../../assets/images/header-background.jpg';
 
 export const Container = styled.div`
-  height: 90vh;
+  min-height: 90vh;
+  height: 100%;
   width: 94vw;
   background-image: url(${headerBackgroundImg});
   background-size: cover;
 
-  margin: 3vh 3vw 0 3vw;
+  margin: 3vh 3vw 5vh 3vw;
   padding: 14vh 7vw 7vh 7vw;
   border: 3px solid ${darkColor};
   border-radius: 20px 20px 0 0;
+  box-shadow: 5px 5px 2px ${lightColor};
 
   h1 {
     font-size: 4rem;
     color: ${darkColor};
 
     text-shadow: 4px 4px 1px ${lightColor};
-    line-height: 5rem;
   }
 
   button {
@@ -69,6 +70,26 @@ export const Container = styled.div`
     font-size: 700;
     margin-bottom: 1rem;
   }
+
+  & > span {
+    display: inline-block;
+    width: 20vw;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+    & > div {
+      flex-direction: column;    
+      & > span {
+        align-self: flex-start;
+      }
+    }
+    & > span {
+      width: 50vw;
+    }
+  }
 `;
 
 export const TicketContainer = styled.div`
@@ -92,7 +113,7 @@ export const TicketContainer = styled.div`
   & > div {
     display: flex;
     align-items: center;
-    margin: 1.5rem 0 2rem;
+    margin: 1rem 0 2rem;
     
     div {
       position: relative;
@@ -127,5 +148,9 @@ export const TicketContainer = styled.div`
   h4 {
     font-size: 1.3rem;
     font-size: 700;
+  }
+
+  @media (max-width: 768px) {
+    width: 50vw;
   }
 `;
